@@ -28,4 +28,5 @@ dependencyResolutionManagement {
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "kit"
+include(":design")
 include(":detekt-rules")

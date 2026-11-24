@@ -7,6 +7,7 @@ Shared build and code of my Android apps (Cauri, Eifi, Griot). Group: `io.github
 ```
 build-logic/              Gradle convention plugins (io.github.krawist.android.application…)
 gradle/libs.versions.toml Version catalog of all the apps
+design/                   Glass surfaces, backdrop and small Compose helpers (io.github.krawist:design)
 detekt-rules/             Shared detekt rules (HardcodedUiText), rule set `krawist`
 ```
 
@@ -27,7 +28,7 @@ dependencyResolutionManagement {
     }
 }
 
-// Modules of the kit, such as detekt-rules.
+// Modules of the kit, such as design and detekt-rules.
 includeBuild("../Kit")
 ```
 
@@ -41,3 +42,14 @@ The app has no `gradle/libs.versions.toml` of its own: a new library goes in the
   `:core:design`).
 - `io.github.krawist.android.hilt`, `io.github.krawist.android.room`: Hilt and Room with KSP.
 - `io.github.krawist.jvm.library`: Kotlin module without Android.
+
+## Design
+
+`io.github.krawist:design` holds what the apps draw alike; the palette, the type and the motion stay in each app.
+
+- `GlassTheme(colors, blur)`: called by the theme of the app, with its `GlassColors` (background, fills, border,
+  shadow) and the result of `supportsGlassBlur()` at startup.
+- `GlassScreen` holds what its glass blurs (background, content, overlay); `GlassSurface` is a card, a bar or a sheet
+  of glass. Without blur, the glass is an opaque tinted surface.
+- `Modifier.backdrop(shapes)` draws the coloured discs behind a screen; each app chooses its `BackdropShape`s.
+- `AnimatedPresence` shows a value while it is set and lets the last one leave with its exit transition.
