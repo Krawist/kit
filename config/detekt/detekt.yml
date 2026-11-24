@@ -1,0 +1,23 @@
+# Overrides of detekt's default configuration (buildUponDefaultConfig = true).
+naming:
+  # Navigation files hold their route classes with the graph functions (one file per graph).
+  MatchingDeclarationName:
+    excludes: ['**/*Navigation.kt']
+  FunctionNaming:
+    ignoreAnnotated: ['Composable']
+  TopLevelPropertyNaming:
+    constantPattern: '[A-Z][A-Za-z0-9_]*'
+complexity:
+  LongParameterList:
+    ignoreDefaultParameters: true
+style:
+  MagicNumber:
+    ignorePropertyDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+    excludes: ['**/test/**', '**/theme/**']
+  UnusedPrivateMember:
+    ignoreAnnotated: ['Preview']
+krawist:
+  HardcodedUiText:
+    active: true
+    excludes: ['**/test/**']
