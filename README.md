@@ -32,7 +32,8 @@ dependencyResolutionManagement {
 includeBuild("../Kit")
 ```
 
-The app has no `gradle/libs.versions.toml` of its own: a new library goes in the catalog of the kit.
+The app has no `gradle/libs.versions.toml` of its own: a new library goes in the catalog of the kit. An app that
+supports older phones than the catalog's `minSdk` sets its own in `gradle.properties` (`krawist.minSdk=26`).
 
 ## Convention plugins
 

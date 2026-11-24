@@ -5,6 +5,7 @@ agp = "9.4.0"
 kotlin = "2.4.21"
 compileSdk = "37"
 targetSdk = "36"
+# An app supporting older phones sets `krawist.minSdk` in its gradle.properties (Eifi: 26).
 minSdk = "29"
 androidxCore = "1.17.0"
 androidxActivity = "1.11.0"
@@ -37,6 +38,13 @@ kotlinxSerialization = "1.8.1"
 media3 = "1.11.1"
 palette = "1.1.0"
 playServicesLocation = "21.3.0"
+# Payments of Eifi: phone numbers, QR codes, scanner and biometric confirmation.
+libphonenumber = "9.0.42"
+zxing = "3.5.3"
+camerax = "1.4.2"
+mlkitBarcode = "17.3.0"
+biometric = "1.1.0"
+fragment = "1.8.5"
 ktlintPlugin = "13.1.0"
 detekt = "1.23.8"
 
@@ -83,6 +91,16 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 detekt-api = { module = "io.gitlab.arturbosch.detekt:detekt-api", version.ref = "detekt" }
 detekt-test = { module = "io.gitlab.arturbosch.detekt:detekt-test", version.ref = "detekt" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "camerax" }
+androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camerax" }
+androidx-camera-mlkit-vision = { module = "androidx.camera:camera-mlkit-vision", version.ref = "camerax" }
+androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "camerax" }
+androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastore" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
+libphonenumber = { module = "com.googlecode.libphonenumber:libphonenumber", version.ref = "libphonenumber" }
+mlkit-barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "mlkitBarcode" }
+zxing-core = { module = "com.google.zxing:core", version.ref = "zxing" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 mlkit-language-id = { module = "com.google.mlkit:language-id", version.ref = "mlkitLanguageId" }

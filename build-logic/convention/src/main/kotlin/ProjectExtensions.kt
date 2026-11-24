@@ -15,12 +15,16 @@ internal val Project.libs: VersionCatalog
 
 internal fun VersionCatalog.version(alias: String): String = findVersion(alias).get().requiredVersion
 
+/** `minSdk` of the catalog, or `krawist.minSdk` of the app's gradle.properties when set (`krawist.minSdk=26`). */
+internal fun Project.minSdk(): Int =
+    providers.gradleProperty("krawist.minSdk").orNull?.toInt() ?: libs.version("minSdk").toInt()
+
 // AGP 9's CommonExtension holds none of these: the application and the libraries are configured alike, each on its
 // own extension.
 internal fun Project.configureKotlinAndroid(extension: ApplicationExtension) {
     extension.apply {
         compileSdk = libs.version("compileSdk").toInt()
-        defaultConfig.minSdk = libs.version("minSdk").toInt()
+        defaultConfig.minSdk = minSdk()
         compileOptions.sourceCompatibility = JavaVersion.VERSION_17
         compileOptions.targetCompatibility = JavaVersion.VERSION_17
         testOptions.unitTests.all { it.useJUnitPlatform() }
@@ -31,7 +35,7 @@ internal fun Project.configureKotlinAndroid(extension: ApplicationExtension) {
 internal fun Project.configureKotlinAndroid(extension: LibraryExtension) {
     extension.apply {
         compileSdk = libs.version("compileSdk").toInt()
-        defaultConfig.minSdk = libs.version("minSdk").toInt()
+        defaultConfig.minSdk = minSdk()
         compileOptions.sourceCompatibility = JavaVersion.VERSION_17
         compileOptions.targetCompatibility = JavaVersion.VERSION_17
         testOptions.unitTests.all { it.useJUnitPlatform() }
